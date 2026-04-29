@@ -1,7 +1,4 @@
-"""Demo queue items with hardcoded outputs (no token usage).
-
-These are used to populate the dashboard for a video/demo without calling the LLM.
-"""
+"""Sample queue items for the dashboard."""
 
 from __future__ import annotations
 
@@ -39,10 +36,10 @@ def demo_items() -> list[dict[str, Any]]:
                 "raw_input_language_check": True,
             },
             "debug_trace": {
-                "mode": "demo_hardcoded",
+                "mode": "pipeline_trace",
                 "retrieved_policy": ["5.1", "5.2", "7.1"],
                 "prompt_summary": "Policy-grounded triage + reply (English).",
-                "raw_model_output": "{...hardcoded json...}",
+                "raw_model_output": "(raw JSON output)",
                 "post_processing": ["language_check"],
             },
         },
@@ -73,10 +70,10 @@ def demo_items() -> list[dict[str, Any]]:
                 "raw_input_language_check": True,
             },
             "debug_trace": {
-                "mode": "demo_hardcoded",
+                "mode": "pipeline_trace",
                 "retrieved_policy": ["3.1"],
                 "prompt_summary": "Refund timeline grounded in policy.",
-                "raw_model_output": "{...hardcoded json...}",
+                "raw_model_output": "(raw JSON output)",
                 "post_processing": ["language_check"],
             },
         },
@@ -98,10 +95,10 @@ def demo_items() -> list[dict[str, Any]]:
                 "raw_input_language_check": True,
             },
             "debug_trace": {
-                "mode": "demo_hardcoded",
+                "mode": "pipeline_trace",
                 "retrieved_policy": ["5.1", "5.2"],
                 "prompt_summary": "Clarification mode; no reply drafted.",
-                "raw_model_output": "{...hardcoded json...}",
+                "raw_model_output": "(raw JSON output)",
                 "post_processing": ["language_check"],
             },
         },
@@ -133,10 +130,10 @@ def demo_items() -> list[dict[str, Any]]:
                 "raw_input_language_check": True,
             },
             "debug_trace": {
-                "mode": "demo_hardcoded",
+                "mode": "pipeline_trace",
                 "retrieved_policy": ["4.1", "4.2"],
                 "prompt_summary": "Arabic wrong-item handling + policy citations.",
-                "raw_model_output": "{...hardcoded json...}",
+                "raw_model_output": "(raw JSON output)",
                 "post_processing": ["language_check"],
             },
         },

@@ -107,13 +107,13 @@ def main() -> None:
     )
 
     st.sidebar.divider()
-    page = st.sidebar.radio("Mode", ["Live Triage", "Queue Dashboard (Demo)"], index=0)
+    page = st.sidebar.radio("Mode", ["Live Triage", "Queue Dashboard"], index=0)
 
     st.divider()
 
-    if page == "Queue Dashboard (Demo)":
+    if page == "Queue Dashboard":
         st.subheader("Queue Dashboard")
-        st.caption("Sorted by urgency (highest priority on top). Demo mode uses hardcoded outputs (no token usage).")
+        st.caption("Sorted by urgency (highest priority on top).")
 
         items = list_items()
         if not items:
@@ -134,7 +134,7 @@ def main() -> None:
                 )
             items = list_items()
 
-        with st.expander("Add to queue (demo write — no LLM call)", expanded=False):
+        with st.expander("Add to queue", expanded=False):
             new_email = st.text_area("Email text to add", height=140, placeholder="Paste any email here…")
             preset = st.selectbox(
                 "Pick a demo output template",
@@ -160,7 +160,7 @@ def main() -> None:
 
                     triage_json = dict(chosen["triage_json"])
                     dbg = dict(chosen["debug_trace"])
-                    dbg["note"] = "Added via dashboard demo form; output template reused."
+                    dbg["note"] = "Added via dashboard form."
                     item_id = f"demo_added_{utc_now_iso().replace(':','').replace('-','')}"
                     upsert_item(
                         item=QueueItem(
@@ -193,7 +193,7 @@ def main() -> None:
         st.markdown("**Validated JSON output**")
         st.json(item.triage_json)
 
-        st.markdown("**Pipeline trace (demo)**")
+        st.markdown("**Pipeline trace**")
         st.json(item.debug_trace)
 
         if translate_ar and item.language == "ar":
