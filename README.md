@@ -75,8 +75,8 @@ For a longer-form discussion, see `TRADEOFFS.md`.
 
 ## Tooling
 
-- **Claude Sonnet via Anthropic API** for triage inference.
-- **Cursor Pro** for scaffolding, boilerplate, and rapid iteration (project structure, stubs, and UI wiring).
+- **Claude Sonnet (Anthropic API)** — triage inference, bilingual reply generation, policy-grounded structured output(GPT-4o or Gemini 2.0 Flash would be preferred in production for cost efficiency — used Claude here as I had remaining tokens)
+- **Cursor**  — project scaffolding, boilerplate, rapid iteration on schema and pipeline wiring
 - **What Cursor generated vs what was written manually**: Cursor generated the initial scaffolding and iterative stubs; core schema constraints, rubric rules, and policy text were refined manually to match the assessment requirements.
 - **Prompts that shaped the system prompt**: Explicit “JSON-only”, “cite numbered policy clauses”, bilingual output constraints, and hard rules around confidence/clarification and urgency 5.
 - **Where I overruled the agent**: Tightened schema invariants and eval constraints to prevent “looks-correct” but unsafe outputs (e.g., drafting a reply when clarification is required).
