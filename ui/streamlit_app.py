@@ -244,6 +244,31 @@ def main() -> None:
             with st.spinner("Triaging…"):
                 output = triage(email_text)
 
+            # Always write to queue DB so every triage run shows up in the dashboard.
+            try:
+                triage_json = output.model_dump(mode="json")
+                upsert_item(
+                    item=QueueItem(
+                        id=f"q_{utc_now_iso().replace(':','').replace('-','')}",
+                        created_at=utc_now_iso(),
+                        urgency=int(getattr(output, "urgency")),
+                        intent=str(getattr(output, "intent")),
+                        language=str(getattr(output, "language_detected")),
+                        sentiment=str(getattr(output, "sentiment")),
+                        email_text=email_text.strip(),
+                        triage_json=triage_json,
+                        debug_trace={
+                            "mode": "pipeline_trace",
+                            "policy_citations": triage_json.get("policy_citations"),
+                            "system": "policy-grounded triage + reply/clarification",
+                            "post_processing": ["strip_code_fences", "intent_overrides", "language_check"],
+                        },
+                    )
+                )
+            except Exception:
+                # Queue is a convenience feature; don't block triage if DB write fails.
+                pass
+
             st.markdown("**Raw JSON output (validated)**")
             st.json(output.model_dump(mode="json"))
 
