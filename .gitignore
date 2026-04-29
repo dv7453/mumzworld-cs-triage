@@ -1,0 +1,15 @@
+.env
+.venv/
+.pytest_cache/
+__pycache__/
+*.pyc
+.DS_Store
+
+# Local vector DB (recreated on demand)
+.chroma/
+
+# Streamlit local state
+.streamlit/
+
+# Local demo queue DB (for dashboard)
+queue.db

@@ -1,0 +1,523 @@
+[
+  {
+    "id": "test_001",
+    "email_text": "Hi Mumzworld team,\\n\\nWhere is my order?",
+    "language": "en",
+    "expected_intent": "delivery_complaint",
+    "expected_urgency_min": 2,
+    "expected_sentiment": "neutral",
+    "expected_clarification_needed": true,
+    "notes": "Very short tracking complaint with no order number; should require clarification."
+  },
+  {
+    "id": "test_002",
+    "email_text": "Hello,\\n\\nI received Pampers size 4 instead of Pampers size 3 (Mega Pack). Order MW-552190. The outer carton has my name but the item inside is wrong. Please arrange an exchange.\\n\\nRegards,\\nNoura",
+    "language": "en",
+    "expected_intent": "wrong_item",
+    "expected_urgency_min": 3,
+    "expected_sentiment": "frustrated",
+    "expected_clarification_needed": false,
+    "notes": "Wrong item received; should route to wrong_item and request photos if needed."
+  },
+  {
+    "id": "test_003",
+    "email_text": "Hi,\\n\\nMy Graco stroller arrived yesterday but I changed my mind. It's unopened and still sealed in the original packaging. Can I return it? Order MW-330118.\\n\\nThanks!",
+    "language": "en",
+    "expected_intent": "return_request",
+    "expected_urgency_min": 2,
+    "expected_sentiment": "neutral",
+    "expected_clarification_needed": false,
+    "notes": "Standard return request within window; item unused/original packaging."
+  },
+  {
+    "id": "test_004",
+    "email_text": "Good morning Mumzworld,\\n\\nThe Philips Avent glass bottle set I received is damaged (two bottles cracked). I can send photos of the packaging and the cracks. Order MW-779014. What are my options?\\n\\nThank you,\\nSarah",
+    "language": "en",
+    "expected_intent": "delivery_complaint",
+    "expected_urgency_min": 3,
+    "expected_sentiment": "neutral",
+    "expected_clarification_needed": false,
+    "notes": "Damaged on delivery; should be delivery_complaint with photo request."
+  },
+  {
+    "id": "test_005",
+    "email_text": "Hi team,\\n\\nMy order MW-900771 (baby formula) was supposed to arrive 2 days ago and the tracking hasn't moved. We are running out tonight. This is urgent for my baby.\\n\\nPlease help.",
+    "language": "en",
+    "expected_intent": "delivery_complaint",
+    "expected_urgency_min": 5,
+    "expected_sentiment": "frustrated",
+    "expected_clarification_needed": false,
+    "notes": "Urgency-5 baby formula delay; health-critical wording explicitly present."
+  },
+  {
+    "id": "test_006",
+    "email_text": "Hello,\\n\\nAfter using the new baby lotion from my last order, my newborn developed a rash and I'm worried it might be an allergic reaction. Product: Mustela Stelatopia Cream. Order MW-118002. Please advise what to do and whether I can return it.\\n\\nRegards,\\nHuda",
+    "language": "en",
+    "expected_intent": "warranty_dispute",
+    "expected_urgency_min": 5,
+    "expected_sentiment": "frustrated",
+    "expected_clarification_needed": false,
+    "notes": "Urgency-5 health/allerg concern; should trigger escalation and safety-first guidance."
+  },
+  {
+    "id": "test_007",
+    "email_text": "Hi Mumzworld,\\n\\nI saw on social media that the Fisher-Price sleeper might be recalled. I bought one from you last month (order MW-440912). Is my product part of the recalled batch? Please confirm ASAP for my baby's safety.\\n\\nThanks,\\nMariam",
+    "language": "en",
+    "expected_intent": "general_inquiry",
+    "expected_urgency_min": 5,
+    "expected_sentiment": "neutral",
+    "expected_clarification_needed": false,
+    "notes": "Urgency-5 recalled product safety check; should be escalated per health-critical trigger."
+  },
+  {
+    "id": "test_008",
+    "email_text": "Hey Mumzworld!\\n\\nJust wanted to say the delivery was super fast and the Philips Avent bottle was perfectly packed. Thank you so much :) Order MW-661772",
+    "language": "en",
+    "expected_intent": "general_inquiry",
+    "expected_urgency_min": 1,
+    "expected_sentiment": "positive",
+    "expected_clarification_needed": false,
+    "notes": "Positive sentiment praise email; should stay low urgency and general inquiry."
+  },
+  {
+    "id": "test_009",
+    "email_text": "Hi,\\n\\nThe promo code BABY10 isn't working. It says 'not applicable'. I'm not sure if it's because I'm buying diapers and wipes. Could you clarify the terms?\\n\\nThanks,\\nAisha",
+    "language": "en",
+    "expected_intent": "promotional_confusion",
+    "expected_urgency_min": 2,
+    "expected_sentiment": "neutral",
+    "expected_clarification_needed": false,
+    "notes": "Promo confusion; should cite promo clause and ask for screenshots if needed."
+  },
+  {
+    "id": "test_010",
+    "email_text": "Hello,\\n\\nSomething is wrong with my order and I'm very upset. Please fix it immediately.",
+    "language": "en",
+    "expected_intent": "escalate",
+    "expected_urgency_min": 3,
+    "expected_sentiment": "frustrated",
+    "expected_clarification_needed": true,
+    "notes": "Ambiguous complaint with no details; should set clarification_needed=true."
+  },
+  {
+    "id": "test_011",
+    "email_text": "يعطيكم العافية،\\n\\nوين طلبي؟",
+    "language": "ar",
+    "expected_intent": "delivery_complaint",
+    "expected_urgency_min": 2,
+    "expected_sentiment": "neutral",
+    "expected_clarification_needed": true,
+    "notes": "Very short Gulf Arabic tracking complaint with no order number; should require clarification."
+  },
+  {
+    "id": "test_012",
+    "email_text": "هلا Mumzworld،\\n\\nوصلتني حفاضات Pampers مقاس 4 وأنا طالبة مقاس 3. الكرتون عليه اسمي بس المنتج غلط. رقم الطلب MW-221905. أبي استبدال بأسرع وقت.\\n\\nتحياتي،\\nأم راشد",
+    "language": "ar",
+    "expected_intent": "wrong_item",
+    "expected_urgency_min": 3,
+    "expected_sentiment": "frustrated",
+    "expected_clarification_needed": false,
+    "notes": "Wrong item in Gulf dialect; should be wrong_item."
+  },
+  {
+    "id": "test_013",
+    "email_text": "مرحبا،\\n\\nأبي أرجّع Graco stroller، ما انفتح ولا استخدمته، وكل شي بالكرتون الأصلي. التوصيل كان قبل 4 أيام. رقم الطلب MW-309144. شلون الإجراءات؟\\n\\nشكراً",
+    "language": "ar",
+    "expected_intent": "return_request",
+    "expected_urgency_min": 2,
+    "expected_sentiment": "neutral",
+    "expected_clarification_needed": false,
+    "notes": "Arabic return request within 7 days; mentions unused/original packaging."
+  },
+  {
+    "id": "test_014",
+    "email_text": "سلام،\\n\\nطلب حليب الطفل (formula) متأخر يومين وما عندي غير علبة تكفي الليلة. رقم الطلب MW-995001. الموضوع مهم لصحة baby.\\n\\nالله يعافيكم لا تتأخرون.",
+    "language": "ar",
+    "expected_intent": "delivery_complaint",
+    "expected_urgency_min": 5,
+    "expected_sentiment": "frustrated",
+    "expected_clarification_needed": false,
+    "notes": "Urgency-5 formula delay in Gulf Arabic; includes health keywords."
+  },
+  {
+    "id": "test_015",
+    "email_text": "هلا،\\n\\nاستخدمت كريم لطفلي newborn وبعده طلعت له حساسية/حكة قوية. أحس allergic reaction. المنتج: Mustela. رقم الطلب MW-880210. أبي أوقفه بس أبي أعرف وش أسوي وهل تقدرون تساعدوني؟\\n\\nمستعجلة.",
+    "language": "ar",
+    "expected_intent": "warranty_dispute",
+    "expected_urgency_min": 5,
+    "expected_sentiment": "frustrated",
+    "expected_clarification_needed": false,
+    "notes": "Urgency-5 allerg/newborn health concern; should escalate."
+  },
+  {
+    "id": "test_016",
+    "email_text": "مرحبا Mumzworld،\\n\\nقريت إن فيه recalled دفعة من كرسي هزاز Fisher-Price. أنا شارياه منكم قبل شهر (MW-402771). تقدرون تتأكدون إذا المنتج عندي ضمن الاسترجاع ولا لا؟ لأن الموضوع baby safety.\\n\\nشكراً",
+    "language": "ar",
+    "expected_intent": "general_inquiry",
+    "expected_urgency_min": 5,
+    "expected_sentiment": "neutral",
+    "expected_clarification_needed": false,
+    "notes": "Urgency-5 recalled product inquiry; should cite escalation clause."
+  },
+  {
+    "id": "test_017",
+    "email_text": "يا جماعة تكفون افهموني...\\n\\nأنا طلبت منكم ثلاث أشياء: Philips Avent bottle (عدد 2) + Pampers size 3 + wipes. الطلب MW-670311، توصل يوم السبت. اللي صار:\\n- البامبرز مقاس غلط\\n- علبة الأفنت وحدة مكسورة\\n- والكود اللي حطيته بالطلب ما انخصم مع أنه مكتوب عليه فعال\\n\\nوالحين أنا تعبت من كثر ما أكلم، وكل مرة أحد يقول شي مختلف. أنا أم ووقتي ضيق، واحتاج حل اليوم. إذا ما فيه حل واضح برفع شكوى.\\n\\nرقمي: 050XXXXXXX\\n\\nأبغى استبدال المقاس الصحيح، وتعويض عن المكسور، وتوضحون لي موضوع الخصم.\\n\\nوش المطلوب مني بالضبط؟",
+    "language": "ar",
+    "expected_intent": "escalate",
+    "expected_urgency_min": 4,
+    "expected_sentiment": "frustrated",
+    "expected_clarification_needed": false,
+    "notes": "Very long multi-issue frustrated mum email (wrong item + damaged + promo confusion) requiring escalation."
+  },
+  {
+    "id": "test_018",
+    "email_text": "هلا Mumzworld،\\n\\nإحنا شركة موزّع لمنتجات أطفال في الإمارات وحابين نعرض منتجاتنا عندكم (خط عربيات أطفال جديد). ممكن تعطوني طريقة التسجيل/الـ onboarding وجهة التواصل؟\\n\\nشكراً،\\nرامي\\nقسم المبيعات",
+    "language": "ar",
+    "expected_intent": "general_inquiry",
+    "expected_urgency_min": 1,
+    "expected_sentiment": "neutral",
+    "expected_clarification_needed": false,
+    "notes": "Out-of-scope vendor onboarding request; should be general_inquiry/escalate without policy promises."
+  },
+  {
+    "id": "test_019",
+    "email_text": "مبروك!!! ربحت آيفون مجاني. اضغط هنا عشان تستلم الجائزة: http://totally-not-scam.example\\n\\nسارع الآن!!!",
+    "language": "ar",
+    "expected_intent": "escalate",
+    "expected_urgency_min": 1,
+    "expected_sentiment": "neutral",
+    "expected_clarification_needed": false,
+    "notes": "Out-of-scope spam/phishing; should be escalated/flagged and no policy citations."
+  },
+  {
+    "id": "test_020",
+    "email_text": "هلا فريق Mumzworld،\\n\\nأول مرة أطلب منكم ومرررة مبسوطة. الطلب MW-115902 وصل بسرعة والتغليف ممتاز. يعطيكم العافية!\\n\\nأم خالد",
+    "language": "ar",
+    "expected_intent": "general_inquiry",
+    "expected_urgency_min": 1,
+    "expected_sentiment": "positive",
+    "expected_clarification_needed": false,
+    "notes": "Positive sentiment Gulf Arabic praise email; low urgency."
+  },
+  {
+    "id": "test_021",
+    "email_text": "Hi Mumzworld,\\n\\nI'd like to return a pack of Philips Avent nipples. I opened the outer box but the inner packs are sealed and unused. Order MW-771201. Is it eligible?\\n\\nThanks,\\nRania",
+    "language": "en",
+    "expected_intent": "return_request",
+    "expected_urgency_min": 2,
+    "expected_sentiment": "neutral",
+    "expected_clarification_needed": false,
+    "notes": "Return request with partial packaging opened; tests policy edge case + clarification questions."
+  },
+  {
+    "id": "test_022",
+    "email_text": "Hello,\\n\\nMy order MW-441090 was marked delivered but I never received it. The building security says no package came. Please investigate.\\n\\nRegards,\\nFaisal",
+    "language": "en",
+    "expected_intent": "delivery_complaint",
+    "expected_urgency_min": 3,
+    "expected_sentiment": "frustrated",
+    "expected_clarification_needed": false,
+    "notes": "Delivered-but-not-received scenario; delivery complaint."
+  },
+  {
+    "id": "test_023",
+    "email_text": "Hi,\\n\\nI paid by card for order MW-120009 and returned the item last week. When will the refund show up?\\n\\nThanks",
+    "language": "en",
+    "expected_intent": "refund_request",
+    "expected_urgency_min": 2,
+    "expected_sentiment": "neutral",
+    "expected_clarification_needed": false,
+    "notes": "Refund timeline question; should cite 5–7 business days."
+  },
+  {
+    "id": "test_024",
+    "email_text": "Hi Mumzworld,\\n\\nCan you exchange my Graco stroller from grey to black? It's the same price on your site. Order MW-330900.\\n\\nRegards,\\nAhmed",
+    "language": "en",
+    "expected_intent": "exchange_request",
+    "expected_urgency_min": 2,
+    "expected_sentiment": "neutral",
+    "expected_clarification_needed": false,
+    "notes": "Straight exchange request same value; subject to availability."
+  },
+  {
+    "id": "test_025",
+    "email_text": "Hello,\\n\\nThe product page said 'free delivery tomorrow' but my checkout shows 3–5 days. Which is correct? I'm in Riyadh.\\n\\nThanks,\\nNoor",
+    "language": "en",
+    "expected_intent": "general_inquiry",
+    "expected_urgency_min": 2,
+    "expected_sentiment": "neutral",
+    "expected_clarification_needed": false,
+    "notes": "Delivery timing confusion; tests no exact timestamp promises."
+  },
+  {
+    "id": "test_026",
+    "email_text": "Hi,\\n\\nI tried using promo code MOM20 and it worked yesterday, now it says expired. Is there another code for Pampers?\\n\\nThanks",
+    "language": "en",
+    "expected_intent": "promotional_confusion",
+    "expected_urgency_min": 2,
+    "expected_sentiment": "neutral",
+    "expected_clarification_needed": false,
+    "notes": "Promo expired/applicability confusion."
+  },
+  {
+    "id": "test_027",
+    "email_text": "Dear Mumzworld,\\n\\nMy baby drank from the bottle I received and then I noticed a crack near the base. I'm worried about health/safety. Order MW-663310. Please advise urgently.\\n\\nSara",
+    "language": "en",
+    "expected_intent": "escalate",
+    "expected_urgency_min": 5,
+    "expected_sentiment": "frustrated",
+    "expected_clarification_needed": false,
+    "notes": "Health-critical safety concern; should escalate (urgency 5)."
+  },
+  {
+    "id": "test_028",
+    "email_text": "Hi,\\n\\nI want a refund but I don't remember the order number. I bought diapers last month. Can you help?\\n\\nThanks",
+    "language": "en",
+    "expected_intent": "refund_request",
+    "expected_urgency_min": 2,
+    "expected_sentiment": "neutral",
+    "expected_clarification_needed": true,
+    "notes": "Refund request missing order details; should require clarification."
+  },
+  {
+    "id": "test_029",
+    "email_text": "Hello team,\\n\\nOrder MW-992001 is over AED 500 and it's delayed. This is unacceptable. I need a supervisor to call me today.\\n\\nMona",
+    "language": "en",
+    "expected_intent": "escalate",
+    "expected_urgency_min": 4,
+    "expected_sentiment": "frustrated",
+    "expected_clarification_needed": false,
+    "notes": "High-value order delay triggers escalation."
+  },
+  {
+    "id": "test_030",
+    "email_text": "Hi Mumzworld,\\n\\nI ordered Pampers size 3 but got size 3.5 pants instead. Order MW-880911. I need the correct one.\\n\\nRegards,\\nLina",
+    "language": "en",
+    "expected_intent": "wrong_item",
+    "expected_urgency_min": 3,
+    "expected_sentiment": "frustrated",
+    "expected_clarification_needed": false,
+    "notes": "Wrong variant received; should be wrong_item (not exchange)."
+  },
+  {
+    "id": "test_031",
+    "email_text": "يعطيكم العافية،\\n\\nأبي استرجع طلب MW-701122 (كرسي سيارة) لأنه طلع المقاس ما يناسب. ما استخدمته ولا فتحته.\\n\\nشكراً",
+    "language": "ar",
+    "expected_intent": "return_request",
+    "expected_urgency_min": 2,
+    "expected_sentiment": "neutral",
+    "expected_clarification_needed": false,
+    "notes": "Arabic return request (unused/unopened) with order number."
+  },
+  {
+    "id": "test_032",
+    "email_text": "هلا Mumzworld،\\n\\nطلبي MW-500122 تأخر، وكل يوم شركة التوصيل تقول بكرة. صار لهم 3 محاولات فاشلة وما أحد تواصل معي.\\n\\nأم علي",
+    "language": "ar",
+    "expected_intent": "escalate",
+    "expected_urgency_min": 4,
+    "expected_sentiment": "frustrated",
+    "expected_clarification_needed": false,
+    "notes": "3+ failed delivery attempts triggers escalation."
+  },
+  {
+    "id": "test_033",
+    "email_text": "مرحبا،\\n\\nأبي فلوس الطلب يرجعون لحسابي. رجعت المنتج قبل أسبوع. رقم الطلب MW-661109.\\n\\nتحياتي",
+    "language": "ar",
+    "expected_intent": "refund_request",
+    "expected_urgency_min": 2,
+    "expected_sentiment": "neutral",
+    "expected_clarification_needed": false,
+    "notes": "Arabic refund status request; should cite refund timeline."
+  },
+  {
+    "id": "test_034",
+    "email_text": "هلا،\\n\\nأنا طلبت Philips Avent bottle set بس وصلني موديل ثاني. رقم الطلب MW-448811. أبي نفس اللي طلبته.\\n\\nشكراً",
+    "language": "ar",
+    "expected_intent": "wrong_item",
+    "expected_urgency_min": 2,
+    "expected_sentiment": "neutral",
+    "expected_clarification_needed": false,
+    "notes": "Arabic wrong model received; should be wrong_item."
+  },
+  {
+    "id": "test_035",
+    "email_text": "السلام عليكم،\\n\\nأبي أبدّل اللون بس، نفس السعر. طلبت Graco stroller رمادي وأبيه أسود إذا متوفر. الطلب MW-990210.\\n\\nشكراً",
+    "language": "ar",
+    "expected_intent": "exchange_request",
+    "expected_urgency_min": 2,
+    "expected_sentiment": "neutral",
+    "expected_clarification_needed": false,
+    "notes": "Arabic exchange request (same value, subject to availability)."
+  },
+  {
+    "id": "test_036",
+    "email_text": "هلا Mumzworld،\\n\\nالكود BABY10 مو راضي يشتغل عندي. يطلع 'غير قابل للتطبيق'. أنا حاطة حفاضات ومناديل.\\n\\nممكن توضحون؟",
+    "language": "ar",
+    "expected_intent": "promotional_confusion",
+    "expected_urgency_min": 2,
+    "expected_sentiment": "neutral",
+    "expected_clarification_needed": false,
+    "notes": "Arabic promo confusion; should request terms/screenshot."
+  },
+  {
+    "id": "test_037",
+    "email_text": "Hi,\\n\\nI want to return an item but I'm in Bahrain. Do you do pickup? I can't find it on the site.\\n\\nThanks",
+    "language": "en",
+    "expected_intent": "general_inquiry",
+    "expected_urgency_min": 2,
+    "expected_sentiment": "neutral",
+    "expected_clarification_needed": true,
+    "notes": "Out-of-scope country vs policy; should ask clarifying questions and avoid inventing pickup promise."
+  },
+  {
+    "id": "test_038",
+    "email_text": "Hello Mumzworld,\\n\\nMy refund was promised 'today'. Can you backdate it to last week because I need it for rent?\\n\\nOrder MW-220009",
+    "language": "en",
+    "expected_intent": "refund_request",
+    "expected_urgency_min": 2,
+    "expected_sentiment": "frustrated",
+    "expected_clarification_needed": false,
+    "notes": "Tests agent limitation: cannot promise backdated refunds."
+  },
+  {
+    "id": "test_039",
+    "email_text": "Hi,\\n\\nThe courier called me and said they can't deliver before 9pm. Can you guarantee delivery by 6pm? It's a birthday gift.\\n\\nOrder MW-110220",
+    "language": "en",
+    "expected_intent": "delivery_complaint",
+    "expected_urgency_min": 2,
+    "expected_sentiment": "neutral",
+    "expected_clarification_needed": false,
+    "notes": "Tests limitation: cannot promise exact delivery timestamps."
+  },
+  {
+    "id": "test_040",
+    "email_text": "Hello,\\n\\nI want to exchange my item but it's cheaper now than when I bought it. Can you exchange and refund the difference?\\n\\nOrder MW-330019",
+    "language": "en",
+    "expected_intent": "exchange_request",
+    "expected_urgency_min": 2,
+    "expected_sentiment": "neutral",
+    "expected_clarification_needed": false,
+    "notes": "Exchange request with value mismatch; should cite same-value policy."
+  },
+  {
+    "id": "test_041",
+    "email_text": "مرحبا،\\n\\nأبي أرجع المنتج بس ما أدري رقم الطلب. شريته قبل شهر تقريباً.\\n\\nشكراً",
+    "language": "ar",
+    "expected_intent": "return_request",
+    "expected_urgency_min": 2,
+    "expected_sentiment": "neutral",
+    "expected_clarification_needed": true,
+    "notes": "Arabic return request missing order number; should ask for details (clarification)."
+  },
+  {
+    "id": "test_042",
+    "email_text": "هلا،\\n\\nطلب MW-881120 وصلني بس ناقص فيه wipes. الكرتون مقفل بس المنتج ناقص.\\n\\nأبي حل.",
+    "language": "ar",
+    "expected_intent": "wrong_item",
+    "expected_urgency_min": 3,
+    "expected_sentiment": "frustrated",
+    "expected_clarification_needed": false,
+    "notes": "Missing item / partial order; route as wrong_item."
+  },
+  {
+    "id": "test_043",
+    "email_text": "السلام عليكم،\\n\\nابني عنده حساسية قوية بعد ما استخدمنا شامبو الأطفال اللي شريته منكم. أحس الموضوع health وخايفة.\\n\\nرقم الطلب MW-770088.",
+    "language": "ar",
+    "expected_intent": "escalate",
+    "expected_urgency_min": 5,
+    "expected_sentiment": "frustrated",
+    "expected_clarification_needed": false,
+    "notes": "Arabic health/allergy case; must be urgency 5 and escalation."
+  },
+  {
+    "id": "test_044",
+    "email_text": "Hi Mumzworld,\\n\\nI want to return something but it's been 10 days since delivery. Is it still possible?\\n\\nOrder MW-101010",
+    "language": "en",
+    "expected_intent": "return_request",
+    "expected_urgency_min": 2,
+    "expected_sentiment": "neutral",
+    "expected_clarification_needed": false,
+    "notes": "Return window exceeded; explain policy without exceptions."
+  },
+  {
+    "id": "test_045",
+    "email_text": "Hello,\\n\\nMy bank shows the refund as pending for 8 business days already. Order MW-880001. Can you check?\\n\\nThanks",
+    "language": "en",
+    "expected_intent": "refund_request",
+    "expected_urgency_min": 2,
+    "expected_sentiment": "frustrated",
+    "expected_clarification_needed": false,
+    "notes": "Refund delayed beyond timeline; should investigate/escalate."
+  },
+  {
+    "id": "test_046",
+    "email_text": "مرحبا Mumzworld،\\n\\nأنا في جدة. هل الاستلام للإرجاع مجاني؟ وإذا بسجل إرجاع كم ياخذ وقت الاستلام؟\\n\\nشكراً",
+    "language": "ar",
+    "expected_intent": "general_inquiry",
+    "expected_urgency_min": 2,
+    "expected_sentiment": "neutral",
+    "expected_clarification_needed": false,
+    "notes": "Arabic policy inquiry about pickup timelines KSA."
+  },
+  {
+    "id": "test_047",
+    "email_text": "Hi,\\n\\nVendor here. We would like to list our new baby carrier brand on Mumzworld. Who do we contact?\\n\\nBest,\\nOmar",
+    "language": "en",
+    "expected_intent": "general_inquiry",
+    "expected_urgency_min": 1,
+    "expected_sentiment": "neutral",
+    "expected_clarification_needed": false,
+    "notes": "Out-of-scope vendor onboarding (English)."
+  },
+  {
+    "id": "test_048",
+    "email_text": "Hi,\\n\\nYour website charged me twice for the same order MW-550011. I need this fixed now.\\n\\nRashed",
+    "language": "en",
+    "expected_intent": "escalate",
+    "expected_urgency_min": 4,
+    "expected_sentiment": "frustrated",
+    "expected_clarification_needed": false,
+    "notes": "Payment/double-charge issue; should escalate to human/finance."
+  },
+  {
+    "id": "test_049",
+    "email_text": "هلا،\\n\\nتم خصم المبلغ مرتين على نفس الطلب MW-990099. أبي أحد يتواصل معي اليوم.\\n\\nشكراً",
+    "language": "ar",
+    "expected_intent": "escalate",
+    "expected_urgency_min": 4,
+    "expected_sentiment": "frustrated",
+    "expected_clarification_needed": false,
+    "notes": "Arabic double charge; escalate."
+  },
+  {
+    "id": "test_050",
+    "email_text": "Hello,\\n\\nStop emailing me. Unsubscribe.\\n\\n",
+    "language": "en",
+    "expected_intent": "general_inquiry",
+    "expected_urgency_min": 1,
+    "expected_sentiment": "frustrated",
+    "expected_clarification_needed": true,
+    "notes": "Out-of-scope unsubscribe request; should clarify account/email and avoid policy claims."
+  },
+  {
+    "id": "test_051",
+    "email_text": "asdjkhqwe 123 !!! zzz ???",
+    "language": "en",
+    "expected_intent": "general_inquiry",
+    "expected_urgency_min": 1,
+    "expected_sentiment": "neutral",
+    "expected_clarification_needed": true,
+    "notes": "Gibberish / low-signal input; should trigger clarification_needed with questions."
+  },
+  {
+    "id": "test_052",
+    "email_text": "   ",
+    "language": "en",
+    "expected_intent": "general_inquiry",
+    "expected_urgency_min": 1,
+    "expected_sentiment": "neutral",
+    "expected_clarification_needed": true,
+    "notes": "Effectively empty input; should trigger clarification_needed."
+  }
+]
+

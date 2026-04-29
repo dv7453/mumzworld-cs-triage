@@ -1,0 +1,9 @@
+pydantic
+streamlit
+python-dotenv
+pytest
+rich
+chromadb
+anthropic
+deep-translator
+
