@@ -4,6 +4,10 @@
 
 This prototype helps Mumzworld customer support teams triage inbound emails in English and Arabic by classifying intent, urgency, and sentiment, and drafting policy-grounded replies when appropriate. It’s built for internal ops: faster routing, more consistent responses, and safer handling of health-critical and high-risk edge cases across a high-volume inbox.
 
+## Architecture
+
+![System Architecture](assets/architecture.png)
+
 ## Setup
 
 ```bash
