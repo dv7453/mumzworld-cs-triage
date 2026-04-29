@@ -63,7 +63,7 @@ See `EVALS.md` for the latest evaluation report. The rubric scores each case out
 ## Tradeoffs
 
 - **Why this problem**: Email triage is a high-volume, high-friction workflow where small improvements compound (faster first response, fewer misroutes, more consistent policy adherence) and bilingual coverage is essential for GCC operations.
-- **Why Claude Sonnet over smaller/cheaper models**: Higher reliability on structured JSON, nuanced intent separation, and natural Arabic customer-service copy reduced failure rates during iteration; smaller models tended to degrade on bilingual + policy-grounded constraints.
+- **Model choice (cost vs quality)**: In production, I’d prefer a more cost-efficient model like GPT-4o or Gemini 2.0 Flash for most standard cases, and reserve a stronger model for high-risk messages. I used Claude Sonnet here because I had remaining usage/tokens and it performed reliably for bilingual + policy-grounded structured output.
 - **Why Streamlit**: Fastest path to a usable internal ops UI with minimal frontend overhead, ideal for prototyping and stakeholder feedback.
 - **What was cut**: Voice input, full RAG over a product catalog/CRM, and multi-turn conversation memory (this prototype is single-email, single-shot).
 - **Known failure modes**: Very long mixed-language emails, highly informal Arabic slang, and ambiguous multi-intent threads can reduce confidence and force clarification.
