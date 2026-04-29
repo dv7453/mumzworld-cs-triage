@@ -7,8 +7,8 @@ This prototype helps Mumzworld customer support teams triage inbound emails in E
 ## Setup
 
 ```bash
-git clone <YOUR_REPO_URL>
-cd mumzworld-triage
+git clone https://github.com/dv7453/mumzworld-cs-triage.git
+cd mumzworld-cs-triage
 ```
 
 Create and activate a virtual environment:
